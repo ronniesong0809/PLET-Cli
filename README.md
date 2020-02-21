@@ -4,7 +4,7 @@
 
 Copyright (c) 2020 Ronnie Song
 
-This is a Rust based Command-line tool sets that scraping PLET (Portland Local Tech Events) from [Calagator](https://calagator.org/), saving it as cvs file, save it to MongoDB, and more. 
+This is a Rust based Command-line tool sets that provided scraping PLET (Portland Local Tech Events) data from [Calagator](https://calagator.org/), saving it as cvs file, import csv it to update MongoDB collection, display documents, and more.
 
 -  [Calagator](https://calagator.org/) is an open source community calendar platform.
 -  This project restructuring is inspired and by [portland-local-tech-event](https://github.com/ronniesong0809/portland-local-tech-event) and [plte-scrapper](https://github.com/ronniesong0809/plte-scrapper).
