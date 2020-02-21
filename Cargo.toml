@@ -1,6 +1,6 @@
 [package]
-name = "rust_csv"
-version = "0.1.0"
+name = "PLET-Cli"
+version = "0.2.0"
 authors = ["Mingjue <mingjue@vt.edu>", "Ronnie Song <ronniesong0809@gmail.com>", "Boxuan Zhang <pedanbox@gmail.com>"]
 edition = "2018"
 
