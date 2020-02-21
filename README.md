@@ -22,11 +22,11 @@ $ cargo run
 ```
 
 ## References
--  Rust Web Scraping: [here](https://www.gkbrk.com/wiki/rust_web_scraping/)
--  Rust Docs csv::Writer: [here](https://docs.rs/csv/1.0.0-beta.1/csv/struct.Writer.html)
--  Read csv records: [here](https://rust-lang-nursery.github.io/rust-cookbook/encoding/csv.html#csv-processing)
--  Announcing the Official MongoDB Rust Driver: [here](https://www.mongodb.com/blog/post/announcing-the-official-mongodb-rust-driver)
-- [Dependencies: [here](https://github.com/ronniesong0809/rust-project/blob/master/Cargo.toml)
+-  Rust Web Scraping by Gokberk Yaltirakli: [here](https://www.gkbrk.com/wiki/rust_web_scraping/)
+-  Rust Docs - csv::Writer: [here](https://docs.rs/csv/1.0.0-beta.1/csv/struct.Writer.html)
+-  Read Cookbook - csv records: [here](https://rust-lang-nursery.github.io/rust-cookbook/encoding/csv.html#csv-processing)
+-  Official MongoDB Rust Driver: [here](https://www.mongodb.com/blog/post/announcing-the-official-mongodb-rust-driver)
+-  Dependencies: [here](https://github.com/ronniesong0809/rust-project/blob/master/Cargo.toml)
 
 ## License
 
