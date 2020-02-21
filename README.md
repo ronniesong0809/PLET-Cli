@@ -1,10 +1,10 @@
-# rust-project
+# PLET-Cli
 [![Build Status](https://travis-ci.com/ronniesong0809/rust-project.svg?branch=master)](https://travis-ci.com/ronniesong0809/rust-project)
 ![Rust](https://github.com/ronniesong0809/rust-project/workflows/Rust/badge.svg)
 
 Copyright (c) 2020 Ronnie Song
 
-This is a Rust based Command-line tool sets that scraping events from [Calagator](https://calagator.org/), saving it as cvs file, save it to MongoDB, and more. 
+This is a Rust based Command-line tool sets that scraping Portland local events from [Calagator](https://calagator.org/), saving it as cvs file, save it to MongoDB, and more. 
 
 -  [Calagator](https://calagator.org/) is an open source community calendar platform.
 -  This project restructuring is inspired and by [portland-local-tech-event](https://github.com/ronniesong0809/portland-local-tech-event) and [plte-scrapper](https://github.com/ronniesong0809/plte-scrapper).
