@@ -3,9 +3,10 @@
 
 Copyright (c) 2020 Ronnie Song
 
-This is a Rust based Command-line tool sets that scraping events from [Calagator](https://calagator.org/), saving it as cvs file, save it to MongoDB, and more.
+This is a Rust based Command-line tool sets that scraping events from [Calagator](https://calagator.org/), saving it as cvs file, save it to MongoDB, and more. 
 
 -  [Calagator](https://calagator.org/) is an open source community calendar platform.
+-  This project restructuring is inspired and by [portland-local-tech-event](https://github.com/ronniesong0809/portland-local-tech-event) and [plte-scrapper](https://github.com/ronniesong0809/plte-scrapper).
 
 ## Usage
 
@@ -20,8 +21,13 @@ $ cargo build
 $ cargo run
 ```
 
+## References
+-  Rust Web Scraping: [here](https://www.gkbrk.com/wiki/rust_web_scraping/)
+-  Rust Docs csv::Writer: [here](https://docs.rs/csv/1.0.0-beta.1/csv/struct.Writer.html)
+-  Read csv records: [here](https://rust-lang-nursery.github.io/rust-cookbook/encoding/csv.html#csv-processing)
+-  Announcing the Official MongoDB Rust Driver: [here](https://www.mongodb.com/blog/post/announcing-the-official-mongodb-rust-driver)
+- [Dependencies: [here](https://github.com/ronniesong0809/rust-project/blob/master/Cargo.toml)
 
 ## License
 
-This program is licensed under the "MIT License". Please
-see the file [`LICENSE`](https://github.com/ronniesong0809/rust-project/blob/master/LICENSE) in the source distribution of this software for license terms.
+This program is licensed under the "MIT License". Please see the file [`LICENSE`](https://github.com/ronniesong0809/rust-project/blob/master/LICENSE) in the source distribution of this software for license terms.
