@@ -1,5 +1,6 @@
 # rust-project
 [![Build Status](https://travis-ci.com/ronniesong0809/rust-project.svg?branch=master)](https://travis-ci.com/ronniesong0809/rust-project)
+![Rust](https://github.com/ronniesong0809/rust-project/workflows/Rust/badge.svg)
 
 Copyright (c) 2020 Ronnie Song
 
