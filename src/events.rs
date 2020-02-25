@@ -103,7 +103,7 @@ pub fn menu() {
     println!("\n\n---- Events Menu ----");
     loop {
         println!("\n1. Scraping all events data");
-        println!("2. Save first 100 events data to CSV");
+        println!("2. Save all events data to CSV");
         println!("3. Import CSV to MongoDB");
         println!("4. Read events from MongoDB");
         println!("5. Search events from MongoDB");

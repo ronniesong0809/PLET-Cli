@@ -117,7 +117,7 @@ pub fn menu() {
     println!("\n\n---- Venues Menu ----");
     loop {
         println!("\n1. Scraping all venues data");
-        println!("2. Save first 100 venues data to CSV");
+        println!("2. Save all venues data to CSV");
         println!("3. Import CSV to MongoDB");
         println!("4. Read venues from MongoDB");
         println!("5. Search venues from MongoDB");
