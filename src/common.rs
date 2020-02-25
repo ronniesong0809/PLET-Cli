@@ -45,29 +45,30 @@ pub fn display(coll_name: &str) {
         println!("\n{}", doc.unwrap());
     }
 }
-
+#[allow(unused_variables)]
 fn month_choose() -> &'static str {
+    
     loop{
-    println!("Enter the number (ex:1 to Jan, 2 to Feb) of the month: ");
-    print!("\n> ");
+        println!("Enter the number (ex:1 to Jan, 2 to Feb) of the month: ");
+        print!("\n> ");
 
-    let input = user_input();
-    let command = input.trim().split_whitespace().next().unwrap();
-    match &*command {
-        "1" => return "Jan",
-        "2" => return "Feb",        
-        "3" => return "Mar",        
-        "4" => return "Apr",        
-        "5" => return "May",        
-        "6" => return "Jun",   
-        "7" => return "Jul",        
-        "8" => return "Aug",        
-        "9" => return "Sep",        
-        "10" => return "Oct",        
-        "11" => return "Nov",
-        "12" => return "Dec",
-        _ => println!("[{}]: command not found, please try again!",command),
-    }
+        let input = user_input();
+        let command = input.trim().split_whitespace().next().unwrap();
+        match &*command {
+            "1" => return "Jan",
+            "2" => return "Feb",        
+            "3" => return "Mar",        
+            "4" => return "Apr",        
+            "5" => return "May",        
+            "6" => return "Jun",   
+            "7" => return "Jul",        
+            "8" => return "Aug",        
+            "9" => return "Sep",        
+            "10" => return "Oct",        
+            "11" => return "Nov",
+            "12" => return "Dec",
+            _ => println!("[{}]: command not found, please try again!",command),
+        }
     }
 }
 /*
@@ -92,12 +93,12 @@ fn year_choose() -> () {
 
 pub fn search(coll_name: &str, field: &str) {
     let coll = coll(coll_name);
-    if(field == "1"){
+    if field == "1" {
         for doc in coll.find(None,None).unwrap() {
         println!("{}", doc.unwrap());
       }
     }
-    else if(coll_name == "calendar" && field == "4") {
+    else if coll_name == "calendar" && field == "4" {
         let month = month_choose();
 
         println!("Enter the number (ex:1 to First day, 2 to Second day) of the day: ");
