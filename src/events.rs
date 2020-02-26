@@ -99,6 +99,33 @@ fn import_to_mongodb() {
     }
 }
 
+fn sup_to_search(){
+    loop {
+        println!("\n1. Search all events");
+        println!("2. Search by id");
+        println!("3. Search by title");
+        println!("4. Search by url");
+        println!("0. Exit");
+
+        // use the > as the prompt
+        print!("\n> ");
+
+        let input = user_input();
+        let command = input.trim().split_whitespace().next().unwrap();
+
+        match &*command {
+            "1" => search("events","1"),
+            "2" => search("events","id"),
+            "3" => search("events","title"),
+            "4" => search("events","url"),
+            "0" => return,
+            "q" => return,
+            "quit" => return,
+            _ => println!("[{}]: command not found, Please try again!", command),
+        }
+    }
+}
+
 pub fn menu() {
     println!("\n\n---- Events Menu ----");
     loop {
@@ -120,7 +147,7 @@ pub fn menu() {
             "2" => save_to_csv(),
             "3" => import_to_mongodb(),
             "4" => display("events"),
-            "5" => search("events", "title"),
+            "5" => sup_to_search(),
             "0" => return,
             "q" => return,
             "quit" => return,

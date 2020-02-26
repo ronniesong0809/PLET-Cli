@@ -45,7 +45,7 @@ pub fn display(coll_name: &str) {
         println!("\n{}", doc.unwrap());
     }
 }
-#[allow(unused_variables)]
+
 fn month_choose() -> &'static str {
     
     loop{
