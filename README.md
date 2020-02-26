@@ -13,8 +13,7 @@ This is a Rust based Command-line tool sets that provided scraping PLET (Portlan
 
 #### Setup
 ```shell
-$ sudo apt-get install pkg-config libssl-dev
-$ sudo apt-get install -y mongodb-org
+$ sudo apt-get install -y pkg-config libssl-dev  mongodb-org
 $ cargo build
 ```
 
