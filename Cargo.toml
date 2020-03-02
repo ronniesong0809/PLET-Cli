@@ -1,5 +1,5 @@
 [package]
-name = "plte-cli"
+name = "plte_cli"
 version = "0.2.0"
 authors = ["Mingjue <mingjue@vt.edu>", "Ronnie Song <ronniesong0809@gmail.com>", "Boxuan Zhang <pedanbox@gmail.com>"]
 edition = "2018"

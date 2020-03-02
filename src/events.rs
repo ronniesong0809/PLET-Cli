@@ -38,10 +38,10 @@ fn parse_date() -> Result<String, Box<Error>> {
     let data: serde_json::Value = serde_json::from_reader(file).expect("it is not a json file");
 
     let mut wtr = Writer::from_path("assets/events.csv")?;
-    wtr.write_record(&["id","title","description","url","start_time","end_time","venue_id","venue_details"])?;
+    wtr.write_record(&["id", "title", "description", "url", "start_time", "end_time", "venue_id", "venue_details"])?;
 
     let length = data.as_array().unwrap().len();
-    for i in 0..length{
+    for i in 0..length {
         let id = data[i].get("id").expect("unable to find id").to_string().replace("\"", "");
         let title = data[i].get("title").expect("unable to find title").to_string().replace("\"", "");
         let description = data[i].get("description").expect("unable to find description").to_string().replace("\"", "");
@@ -56,7 +56,7 @@ fn parse_date() -> Result<String, Box<Error>> {
         println!("         time: {} - {}", start_time, end_time);
         println!("     venue_id: {}", venue_id);
         println!("venue_details: {}", venue_details);
-        wtr.write_record(&[id,title,description,url,start_time,end_time,venue_id,venue_details])?;
+        wtr.write_record(&[id, title, description, url, start_time, end_time, venue_id, venue_details])?;
     }
     wtr.flush()?;
     Ok(format!("\nSuccessfully saved {} events to assets/events.csv", length))
@@ -75,8 +75,7 @@ fn save_to_csv() {
 
 fn insert(file: File) -> Result<String, Box<dyn Error>> {
     let coll = coll("events");
-    coll.delete_many(doc! {}, None)
-        .expect("Failed to delete documents.");
+    coll.delete_many(doc! {}, None).expect("Failed to delete documents.");
 
     let mut count = 0;
     let mut rdr = read_file(file);

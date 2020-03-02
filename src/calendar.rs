@@ -36,7 +36,7 @@ fn scraping_event() {
 #[allow(bare_trait_objects)]
 pub fn parse_date() -> Result<String, Box<Error>> {
     let mut wtr = Writer::from_path("assets/calendar.csv")?;
-    wtr.write_record(&["summary","location","days_of_week","month","day","year","start","end",])?;
+    wtr.write_record(&["summary", "location", "days_of_week", "month", "day", "year", "start", "end"])?;
 
     let mut count = 0;
     let document = Document::from(include_str!("../assets/calendar.html"));
@@ -56,7 +56,7 @@ pub fn parse_date() -> Result<String, Box<Error>> {
         println!("days_of_week: {}", days_of_week);
         println!("        date: {} {} {}", month, day, year);
         println!("        time: {} - {}", start, end);
-        wtr.write_record(&[summary,location,days_of_week,month.to_string(),day.to_string(),year.to_string(),start,end,])?;
+        wtr.write_record(&[summary, location, days_of_week, month.to_string(), day.to_string(), year.to_string(), start, end])?;
         count += 1;
     }
     wtr.flush()?;
@@ -76,8 +76,7 @@ fn save_to_csv() {
 
 fn insert(file: File) -> Result<String, Box<dyn Error>> {
     let coll = coll("calendar");
-    coll.delete_many(doc! {}, None)
-        .expect("Failed to delete documents.");
+    coll.delete_many(doc! {}, None).expect("Failed to delete documents.");
 
     let mut count = 0;
     let mut rdr = read_file(file);

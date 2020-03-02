@@ -1,5 +1,4 @@
 # PLET-Cli
-[![Build Status](https://travis-ci.com/ronniesong0809/plte-cli.svg?branch=master)](https://travis-ci.com/ronniesong0809/plte-cli)
 ![Rust](https://github.com/ronniesong0809/plte-cli/workflows/Rust/badge.svg)
 
 Copyright (c) 2020 Ronnie Song
@@ -12,15 +11,53 @@ This is a Rust based Command-line tool sets that provided scraping PLET (Portlan
 ## Usage
 
 #### Setup
+Please install prerequisites MongoDB: [here](https://docs.mongodb.com/manual/administration/install-community/)
+
 ```shell
-$ sudo apt-get install -y pkg-config libssl-dev  mongodb-org
+$ sudo apt-get update
+$ sudo apt-get install -y pkg-config libssl-dev mongodb
 $ cargo build
 ```
 
 #### Run
+
+To run the example program, type the command below:
+
 ```shell
 $ cargo run
 ```
+
+Everything went well! It's able to scrape events and save it to the right path, prase and convert to csv format from json/html without issues, and successfully import to MongoDB as expected.
+
+#### Test
+
+To test the library crate, type the command below:
+
+```shell
+$ cargo test
+```
+```shell
+   Compiling plte_cli v0.2.0 (/mnt/d/Ronnie/Desktop/Winter 2020/rust/plte-cli)
+    Finished test [unoptimized + debuginfo] target(s) in 34.29s
+     Running target/debug/deps/plte_cli-12cc08ee9875ab00
+
+running 6 tests
+test common::database_connection_failed ... ok
+test common::collection_connection_failed ... ok
+test common::collection_connection_test ... ok
+test common::database_connection_test ... ok
+test common::scraping_html_test ... ok
+test common::scraping_json_test ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+```
+
+All tests passed with no issues.
+
+The tests are placed in tests/test.rs file that uses std assert_eq!() and assert_ne!() to test equality of the actual result and expected result of the MongoDB connection and Scrapping status code in that file.
+
+Github Action CI are running to do the automated testing.
+![Rust](https://github.com/ronniesong0809/plte-cli/workflows/Rust/badge.svg)
 
 ## References
 -  Rust Web Scraping by Gokberk Yaltirakli: [here](https://www.gkbrk.com/wiki/rust_web_scraping/)

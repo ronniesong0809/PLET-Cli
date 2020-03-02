@@ -11,8 +11,8 @@ pub async fn scraping(url: &str, dist: &str) -> Result<reqwest::StatusCode, Box<
     let response = reqwest::get(url).await?;
     let status = response.status();
     let body = response.text().await?;
-    // println!("{:?}", status);
-    println!("{:?}", body);
+    println!("status: {:?}", status);
+    // println!("{:?}", body);
     let mut file = File::create(dist)?;
     file.write_all(body.as_bytes())?;
     file.sync_all()?;
@@ -75,4 +75,60 @@ pub fn user_input() -> std::string::String {
         input = "0".to_string();
     }
     input
+}
+
+#[test]
+fn database_connection_test() {
+    let client = mongodb_driver();
+    let coll = client.database("calagator").collection("venues");
+    coll.insert_one(doc! { "id": "1"}, None).unwrap();
+
+    let db_name = client.list_database_names(None).unwrap();
+    let check = (&db_name).into_iter().any(|v| v == "calagator");
+
+    assert_eq!(check, true);
+}
+
+#[test]
+fn database_connection_failed() {
+    let client = mongodb_driver();
+    let db_name = client.list_database_names(None).unwrap();
+    let check = (&db_name).into_iter().any(|v| v == "not_exist");
+
+    assert_ne!(check, true);
+}
+
+#[test]
+fn collection_connection_test() {
+    let db = db();
+    let coll = db.collection("venues");
+    coll.insert_one(doc! { "id": "1"}, None).unwrap();
+
+    let coll_name = db.list_collection_names(None).unwrap();
+    let check = (&coll_name).into_iter().any(|v| v == "venues");
+
+    assert_eq!(check, true);
+}
+
+#[test]
+fn collection_connection_failed() {
+    let client = db();
+    let coll_name = client.list_collection_names(None).unwrap();
+    let check = (&coll_name).into_iter().any(|v| v == "not_exist");
+
+    assert_ne!(check, true);
+}
+
+#[test]
+fn scraping_html_test() {
+    let html = scraping("https://calagator.org", "assets/calendar.html").unwrap();
+
+    assert_eq!(html.as_u16(), 200);
+}
+
+#[test]
+fn scraping_json_test() {
+    let json = scraping("https://calagator.org/events.json", "assets/events.json").unwrap();
+
+    assert_eq!(json.as_u16(), 200);
 }
