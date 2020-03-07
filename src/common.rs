@@ -71,26 +71,7 @@ fn month_choose() -> &'static str {
         }
     }
 }
-/*
-fn day_choose() -> () {
-    println!("Enter the number (ex:1 to First day, 2 to Second day) of the day: ");
-    print!("\n> ");
-
-    let input = user_input();
-    let command = input.trim().split_whitespace().next().unwrap();
-    command;
-}
-
-fn year_choose() -> () {
-    println!("Enter the number (ex:1995, 2000, 2020) of the year: ");
-    print!("\n> ");
-
-    let input = user_input();
-    let command = input.trim().split_whitespace().next().unwrap();
-    command;
-}
-*/
-
+    
 pub fn search(coll_name: &str, field: &str) {
     let coll = coll(coll_name);
     if field == "1" {
@@ -119,6 +100,44 @@ pub fn search(coll_name: &str, field: &str) {
             }
         }
     }
+    else if coll_name == "events" && field == "all" {
+        println!("Enter the number of start time: ");
+        print!("\n> ");
+        let input = user_input();
+        let temp = input.trim();
+
+        println!("Enter the number of end time: ");
+        print!("\n> ");
+        let input = user_input();
+        let tempy = input.trim();
+        let filter = doc!{"start_time":temp,"end_time":tempy,};
+        let cursor = coll.find(filter,None).unwrap();
+        for result in cursor {
+            match result {
+                Ok(document) => println!("\nDocument: {:?}",document),
+                Err(e) => println!("Error! {:?}", e),
+            }
+        }
+    }   
+    else if coll_name == "venues" && field == "all" {
+        println!("Enter the number of latitude: ");
+        print!("\n> ");
+        let input = user_input();
+        let temp = input.trim();
+
+        println!("Enter the number of longitude: ");
+        print!("\n> ");
+        let input = user_input();
+        let tempy = input.trim();
+        let filter = doc!{"latitude":temp,"longitude":tempy,};
+        let cursor = coll.find(filter,None).unwrap();
+        for result in cursor {
+            match result {
+                Ok(document) => println!("\nDocument: {:?}",document),
+                Err(e) => println!("Error! {:?}", e),
+            }
+        }
+   }
     else {
         print!("\nPlease enter the {} plan to search: " ,field);
         let find_input = user_input();
@@ -139,7 +158,7 @@ pub fn user_input() -> std::string::String {
     stdout().flush().unwrap();
     let mut input = String::new();
     stdin().read_line(&mut input).expect("Failed to read line");
-    // print!("{:?}", input);
+    //print!("{:?}", input);
     if input == "\n" {
         input = "0".to_string();
     }

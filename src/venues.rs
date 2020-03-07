@@ -122,6 +122,7 @@ fn sup_to_search(){
         println!("5. Search by location");
         println!("6. Search by state");
         println!("7. Search by zipcode");
+        println!("8. Search by latitude and longitude");
         println!("0. Exit");
 
         // use the > as the prompt
@@ -137,7 +138,8 @@ fn sup_to_search(){
             "4" => search("venues","url"),
             "5" => search("venues","locality"),
             "6" => search("venues","region"),            
-            "7" => search("venues","postal_code"),            
+            "7" => search("venues","postal_code"),
+            "8" => search("venues","all"),
             "0" => return,
             "q" => return,
             "quit" => return,

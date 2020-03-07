@@ -105,6 +105,7 @@ fn sup_to_search(){
         println!("2. Search by id");
         println!("3. Search by title");
         println!("4. Search by url");
+        println!("5. Search by start and end time");
         println!("0. Exit");
 
         // use the > as the prompt
@@ -118,6 +119,7 @@ fn sup_to_search(){
             "2" => search("events","id"),
             "3" => search("events","title"),
             "4" => search("events","url"),
+            "5" => search("events","all"),
             "0" => return,
             "q" => return,
             "quit" => return,
