@@ -1,7 +1,7 @@
 extern crate csv;
 extern crate mongodb;
 extern crate select;
-use crate::common::{coll, display, read_file, scraping, search, user_input};
+use crate::common::{coll, display, read_file, scraping, search, user_input, delete};
 use bson::{bson, doc};
 use csv::Writer;
 use serde::Deserialize;
@@ -136,6 +136,7 @@ pub fn menu() {
         println!("3. Import CSV to MongoDB");
         println!("4. Read events from MongoDB");
         println!("5. Search events from MongoDB");
+        println!("6. Delete events from MongoDB");
         println!("0. Back");
 
         // use the > as the prompt
@@ -150,6 +151,7 @@ pub fn menu() {
             "3" => import_to_mongodb(),
             "4" => display("events"),
             "5" => sup_to_search(),
+            "6" => delete("events","id"),
             "0" => return,
             "q" => return,
             "quit" => return,

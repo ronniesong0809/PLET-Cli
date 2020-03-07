@@ -150,7 +150,7 @@ pub fn menu() {
             "3" => import_to_mongodb(),
             "4" => display("calendar"),
             "5" => sup_to_search(),
-            "6" => delete("calender","summary"),
+            "6" => delete("calender","id"),
             "0" => return,
             "q" => return,
             "quit" => return,
