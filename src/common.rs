@@ -41,9 +41,12 @@ pub fn read_file(file: File) -> csv::Reader<std::io::BufReader<std::fs::File>> {
 pub fn display(coll_name: &str) {
     let coll = coll(coll_name);
     let cursor = coll.find(None, None).unwrap();
+    let mut count = 0;
     for doc in cursor {
         println!("\n{}", doc.unwrap());
+        count += 1;
     }
+    println!("Total {:?} events displayed", count);
 }
 
 fn month_choose() -> &'static str {
@@ -152,6 +155,17 @@ pub fn search(coll_name: &str, field: &str) {
             }
         }
     }
+}
+
+pub fn delete(coll_name: &str, field: &str){
+    let coll = coll(coll_name);
+    print!("\nPlease enter the {} plan to delete: " ,field);
+    let find_input = user_input();
+    let find = find_input.trim();
+	match coll.delete_one(doc! {field: find}, None) {
+        Ok(_) => println!("Item deleted!"),
+        Err(e) => println!("Error! {:?}",e),
+	}
 }
 
 pub fn user_input() -> std::string::String {
