@@ -1,7 +1,7 @@
 extern crate csv;
 extern crate mongodb;
 extern crate select;
-use crate::common::{coll, display, read_file, scraping, search, user_input};
+use crate::common::{coll, display, read_file, scraping, search, user_input, delete};
 use bson::{bson, doc};
 use csv::Writer;
 use serde::Deserialize;
@@ -112,6 +112,41 @@ fn import_to_mongodb() {
     }
 }
 
+fn sup_to_search(){
+    loop {
+        println!("\n1. Search all venues");
+        println!("2. Search by id");
+        println!("3. Search by title");
+        println!("4. Search by url");
+        println!("5. Search by location");
+        println!("6. Search by state");
+        println!("7. Search by zipcode");
+        println!("8. Search by latitude and longitude");
+        println!("0. Exit");
+
+        // use the > as the prompt
+        print!("\n> ");
+
+        let input = user_input();
+        let command = input.trim().split_whitespace().next().unwrap();
+
+        match &*command {
+            "1" => search("venues","1"),
+            "2" => search("venues","id"),
+            "3" => search("venues","title"),
+            "4" => search("venues","url"),
+            "5" => search("venues","locality"),
+            "6" => search("venues","region"),            
+            "7" => search("venues","postal_code"),
+            "8" => search("venues","all"),
+            "0" => return,
+            "q" => return,
+            "quit" => return,
+            _ => println!("[{}]: command not found, Please try again!", command),
+        }
+    }
+}
+
 pub fn menu() {
     println!("\n\n---- Venues Menu ----");
     loop {
@@ -120,6 +155,7 @@ pub fn menu() {
         println!("3. Import CSV to MongoDB");
         println!("4. Read venues from MongoDB");
         println!("5. Search venues from MongoDB");
+        println!("6. Delete venues from MongoDB");
         println!("0. Back");
 
         // use the > as the prompt
@@ -133,7 +169,8 @@ pub fn menu() {
             "2" => save_to_csv(),
             "3" => import_to_mongodb(),
             "4" => display("venues"),
-            "5" => search("venues", "title"),
+            "5" => sup_to_search(),
+            "6" => delete("venues", "id"),
             "0" => return,
             "q" => return,
             "quit" => return,

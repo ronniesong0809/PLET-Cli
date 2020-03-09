@@ -1,7 +1,7 @@
 extern crate csv;
 extern crate mongodb;
 extern crate select;
-use crate::common::{coll, display, read_file, scraping, search, user_input};
+use crate::common::{coll, display, read_file, scraping, search, user_input, delete};
 use bson::{bson, doc};
 use csv::Writer;
 use select::{document::Document, predicate::Class};
@@ -99,6 +99,33 @@ fn import_to_mongodb() {
     }
 }
 
+fn sup_to_search(){
+    loop {
+        println!("\n1. Search all events");
+        println!("2. Search by title");
+        println!("3. Search by location");
+        println!("4. Search by time");
+        println!("0. Exit");
+
+        // use the > as the prompt
+        print!("\n> ");
+
+        let input = user_input();
+        let command = input.trim().split_whitespace().next().unwrap();
+
+        match &*command {
+            "1" => search("calendar","1"),
+            "2" => search("calendar","summary"),
+            "3" => search("calendar","location"),
+            "4" => search("calendar","4"),
+            "0" => return,
+            "q" => return,
+            "quit" => return,
+            _ => println!("[{}]: command not found, Please try again!", command),
+        }
+    }
+}
+
 pub fn menu() {
     println!("\n\n---- Home Page Calendar Menu ----");
     loop {
@@ -107,6 +134,7 @@ pub fn menu() {
         println!("3. Import CSV to MongoDB");
         println!("4. Read events from MongoDB");
         println!("5. Search events from MongoDB");
+        println!("6. Delete events from MongoDB");
         println!("0. Exit");
 
         // use the > as the prompt
@@ -120,7 +148,8 @@ pub fn menu() {
             "2" => save_to_csv(),
             "3" => import_to_mongodb(),
             "4" => display("calendar"),
-            "5" => search("calendar", "summary"),
+            "5" => sup_to_search(),
+            "6" => delete("calender","id"),
             "0" => return,
             "q" => return,
             "quit" => return,
