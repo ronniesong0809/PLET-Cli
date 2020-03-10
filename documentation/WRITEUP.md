@@ -11,6 +11,7 @@ I attempted to implement a command line web scraper that collects data from cala
 4. Stored parsed data to **csv** file by [CSV](https://crates.io/crates/csv) library crate
 5. Read **csv** files and import data to MongoDB by the [MongoDB](https://crates.io/crates/mongodb) library crate
 6. Display document from the MongoDB collection by document’s field.
+7. Delete document from the MongoDB collection.
 
 ### Future Goal?
 - Scraping other websites.
